@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kimi API 配置</title>
+    <style>
+      body {
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        margin: 24px;
+        color: #0f172a;
+        background: #f8fafc;
+      }
+      .card {
+        max-width: 720px;
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+      }
+      h1 {
+        font-size: 18px;
+        margin: 0 0 12px;
+      }
+      label {
+        display: block;
+        margin-top: 14px;
+        font-weight: 600;
+        font-size: 13px;
+      }
+      input,
+      select {
+        width: 100%;
+        margin-top: 8px;
+        padding: 10px 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 12px;
+        outline: none;
+      }
+      button {
+        margin-top: 16px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid #6366f1;
+        background: #6366f1;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .hint {
+        margin-top: 10px;
+        font-size: 12px;
+        color: #475569;
+        line-height: 1.5;
+      }
+      .status {
+        margin-top: 14px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: #f1f5f9;
+        border: 1px solid #e2e8f0;
+        font-size: 13px;
+      }
+      .status.ok {
+        background: #ecfdf5;
+        border-color: #bbf7d0;
+      }
+      .status.err {
+        background: #fff1f2;
+        border-color: #fecdd3;
+      }
+      .row {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 720px) {
+        .row {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Moonshot / Kimi API 配置</h1>
+      <div class="hint">
+        说明：扩展会在后台使用你提供的 API Key 调用 Moonshot/Kimi 完成“解释、翻译、润色”。<br />
+        朗读功能使用浏览器内置语音引擎（不需要 API Key）。
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="apiKey">Kimi API Key</label>
+          <input id="apiKey" type="password" placeholder="在 https://platform.moonshot.cn/console/api-keys 获取" autocomplete="off" />
+        </div>
+        <div>
+          <label for="model">模型</label>
+          <select id="model">
+            <option value="kimi-k2.5" selected>kimi-k2.5</option>
+            <option value="kimi-k2-0905-preview">kimi-k2-0905-preview</option>
+            <option value="kimi-k2-turbo-preview">kimi-k2-turbo-preview</option>
+            <option value="kimi-k2-thinking-turbo">kimi-k2-thinking-turbo</option>
+            <option value="moonshot-v1-32k">moonshot-v1-32k</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="saveBtn" type="button">保存配置</button>
+      <div id="status" class="status" aria-live="polite">等待你保存配置…</div>
+
+      <div class="hint">
+        常见问题：如果调用失败，请检查 API Key 是否正确，并确保你有权限访问所选模型。
+        （参考文档：<a href="https://platform.moonshot.cn/docs" target="_blank" rel="noreferrer">https://platform.moonshot.cn/docs</a>）
+      </div>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>
+

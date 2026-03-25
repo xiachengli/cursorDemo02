@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "选中文本AI助手（解释/翻译/朗读/润色）",
+  "version": "0.1.0",
+  "description": "选中文本后悬浮操作：解释、翻译、朗读、润色并支持一键替换。",
+  "permissions": ["storage"],
+  "host_permissions": ["https://api.moonshot.cn/*", "https://api.moonshot.ai/*"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}
