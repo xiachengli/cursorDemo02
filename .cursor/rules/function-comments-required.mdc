@@ -1,0 +1,51 @@
+---
+description: 所有函数必须包含注释（说明用途、参数与返回值）
+globs: "**/*.{js,ts,tsx,jsx,mjs,cjs,vue,svelte,html,py,go,rs,java,cs,php}"
+alwaysApply: false
+---
+
+# 函数注释（必填）
+
+编写或修改函数时，**必须为每个函数添加注释**，不得新增无注释的函数。
+
+## 要求
+
+- **JavaScript / TypeScript**：在函数上方使用 JSDoc/TSDoc（`/** ... */`），至少说明用途；有参数或返回值时写明 `@param`、`@returns`。
+- **Python**：使用 docstring（三引号），说明用途与重要参数。
+- **其他语言**：在函数上方用该语言惯用的文档注释或块注释，说明函数做什么。
+
+## 示例
+
+```javascript
+// ❌ 不符合：无注释
+function sum(a, b) {
+  return a + b;
+}
+
+// ✅ 符合：有 JSDoc
+/**
+ * 返回两数之和。
+ * @param {number} a
+ * @param {number} b
+ * @returns {number}
+ */
+function sum(a, b) {
+  return a + b;
+}
+```
+
+```python
+# ❌ 不符合
+def greet(name):
+    return f"Hello, {name}"
+
+# ✅ 符合
+def greet(name: str) -> str:
+    """向用户返回问候语。"""
+    return f"Hello, {name}"
+```
+
+## 对 AI 的约束
+
+- 新增函数时默认带上注释。
+- 若用户要求省略注释，仍应提醒其违反本规则；仅在用户明确坚持且仅限该次修改时可例外。
